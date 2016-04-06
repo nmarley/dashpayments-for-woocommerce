@@ -1,0 +1,20 @@
+<input type="hidden" name="order_id" id="order_id" value="{{ order_id }}">
+<input type="hidden" name="is_finalized" id="is_finalized" value="{{ is_finalized }}">
+<h3><img src="{{ header_icon }}">&nbsp;Invoice has been Overpaid!</h3>
+
+This has been overpaid in the amount of {{ overpaid_amount }} {{ payment_currency }}!
+
+<div id="tx_info" style="display: block; padding: 15px; margin-bottom: 20px; border: 1px solid transparent; border-radius: 4px; box-sizing: border-box; background-color: #dff0d8; border-color: #d6e9c6; color: #3c763d;">
+  The following transaction ids were used to pay this invoice:
+  <ul id="txlist" style="padding-left: 20px;">
+    {% for txid in txid_list %}
+      <li>{{ txid }}</li>
+    {% endfor %}
+  </ul>
+</div>
+
+Refunds may be given according to the store owner's policy on overpayments. Please contact the store owner regarding settlement of your overpayment balance.
+
+Thanks for choosing to Pay with {{ payment_currency }}!
+
+See order details below.

@@ -1,0 +1,9 @@
+# temp/vendor files
+tmp/
+*.zip
+vendor/
+
+# OS- and editor-generated files
+*.swp
+*~
+.DS_Store

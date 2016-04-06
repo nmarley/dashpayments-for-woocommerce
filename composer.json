@@ -1,0 +1,36 @@
+{
+    "name": "blackcarrot/dashpay-woocommerce",
+    "description": "DashPayments for WooCommerce",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Black Carrot Ventures",
+            "email": "nmarley@blackcarrot.be",
+            "homepage": "http://blackcarrotventures.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "ext-gd": "*",
+        "ext-gmp": "*",
+        "ext-json": "*",
+        "ext-curl": "*",
+        "ext-openssl": "*",
+        "ext-mcrypt": "*",
+        "mdanter/ecc": "~0.3",
+        "pleonasm/merkle-tree": "1.0.0",
+        "fguillot/json-rpc": "0.0.1",
+        "rych/hash_pbkdf2-compat": "~1.0",
+        "lastguest/murmurhash": "~1.1",
+        "rgooding/protobuf-php": "~0.0",
+        "react/react": "~0.4",
+        "react/socket-client": "~0.4",
+        "bitwasp/buffertools": "~0.1.16",
+        "bitwasp/trait": "~0.0",
+        "bitwasp/stratum": "~0.1",
+        "bitwasp/secp256k1-php": "~0.0.6",
+        "bitwasp/bitcoin": "^0.0.20",
+        "bacon/bacon-qr-code": "^1.0",
+        "twig/twig": "~1.0"
+    }
+}

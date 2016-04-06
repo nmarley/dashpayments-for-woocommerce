@@ -1,0 +1,60 @@
+<input type="hidden" name="order_id" id="order_id" value="{{ order_id }}">
+<input type="hidden" name="is_finalized" id="is_finalized" value="{{ is_finalized }}">
+
+{% if txid_list|length > 0 %}
+<div id="tx_info" style="display: block; padding: 15px; margin-bottom: 20px; border: 1px solid transparent; border-radius: 4px; box-sizing: border-box; background-color: #dff0d8; border-color: #d6e9c6; color: #3c763d;">
+  Incoming transactions detected:
+  <ul id="txlist" style="padding-left: 20px;">
+    {% for txid in txid_list %}
+      <li>{{ txid }}</li>
+    {% endfor %}
+  </ul>
+
+  This store requires that transactions have {{ required_confirmations }} confirmations on the Dash network before being processed. Once this number has been reached, payment will be confirmed.
+</div>
+{% endif %}
+
+<table>
+<tr>
+  <td colspan="4">Please send your payment as follows:</td>
+</tr>
+<tr>
+  <td colspan="1" style="vertical-align:middle;">
+  Amount <strong>Dash</strong>:
+  </td>
+  <td colspan="3">
+    <div style="border:1px solid #FCCA09;padding:2px 6px;margin:2px;background-color:#FCF8E3;border-radius:4px;color:#CC0000;font-weight: bold;font-size: 120%;">
+        {{ payment_amount }}
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="1" style="vertical-align:middle;">
+  Address:
+  </td>
+  <td colspan="3">
+    <div style="border:1px solid #FCCA09;padding:2px 6px;margin:2px;background-color:#FCF8E3;border-radius:4px;color:#555;font-weight: bold;font-size: 120%;">
+      {{ payment_address }}
+    </div>
+    </td>
+</tr>
+<tr>
+<td colspan="1" style="vertical-align:middle;">
+    QR Code:
+</td>
+<td colspan="3">
+  <div style="border:1px solid #FCCA09;padding:5px;margin:2px;background-color:#FCF8E3;border-radius:4px;">
+    <a href="dash:{{ payment_address }}?amount={{ payment_amount }}">
+    <img src="{{ qr_code_url }}" alt="" title="" style="vertical-align:middle;border:1px solid #888;">
+    </a>
+  </div>
+</td>
+</tr>
+</table>
+
+Please note:
+<ol>
+  <li>You must make a payment within one hour, or your order will be cancelled.</li>
+  <li>As soon as your payment is received, you will receive an email confirmation with order delivery details.</li>
+  <li>You may send multiple payments in order to reach the total required amount.</li>
+</ol>
