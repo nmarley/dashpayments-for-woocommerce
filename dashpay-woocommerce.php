@@ -3,7 +3,7 @@
  * Plugin Name: DashPayments for WooCommerce
  * Plugin URI: http://blackcarrotventures.com/dashpay-woocommerce
  * Description: A WooCommerce payment gateway that enables direct Dash payments.
- * Version: 0.0.1
+ * Version: 0.0.2
  * Author: Black Carrot Ventures
  * Author URI: http://blackcarrotventures.com/
  * Requires at least: 4.4.2
@@ -46,7 +46,7 @@ final class DashPayments {
      *
      * @var string
      */
-    public $version = '0.0.1';
+    public $version = '0.0.2';
 
     /**
      * The single instance of the class.
@@ -96,7 +96,7 @@ final class DashPayments {
      * @since 0.0.1
      */
     public function __wakeup() {
-        _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'woocommerce' ), '2.1' );
+        _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'woocommerce' ), '0.0.1' );
     }
 
     /**

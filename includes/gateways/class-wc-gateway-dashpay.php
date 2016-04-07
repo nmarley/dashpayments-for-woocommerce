@@ -45,7 +45,6 @@ class WC_Gateway_DashPay extends WC_Payment_Gateway {
         $this->description = $this->settings['description'];
 
         $this->xpub_key = $this->settings['xpub_key'];
-        $this->correct_xpub_key = $this->ensure_correct_xpub_key($this->xpub_key);
         $this->confirmations = $this->settings['confirmations'];
         $this->exchange_multiplier = $this->settings['exchange_multiplier'];
 
@@ -59,7 +58,7 @@ class WC_Gateway_DashPay extends WC_Payment_Gateway {
         add_action( 'woocommerce_email_before_order_table', array( $this, 'email_instructions' ), 10, 3 );
 
         // Effectively broken, so not going to implement this 'til WordPress fixes it
-        // add_action( 'admin_notices', array( $this, 'admin_notices' ) );
+        add_action( 'admin_notices', array( $this, 'admin_notices' ) );
     }
 
 
@@ -106,7 +105,8 @@ class WC_Gateway_DashPay extends WC_Payment_Gateway {
         }
 
         // ensure matching xpub and insight networks
-        $xpub_network = CoinUtil::guess_network_from_xkey($this->correct_xpub_key);
+        $xpub_network = CoinUtil::guess_network_from_xkey( $this->correct_xpub_key() );
+
         $insight_network;
         try {
             $insight_network = $insight->get_network();
@@ -175,7 +175,7 @@ class WC_Gateway_DashPay extends WC_Payment_Gateway {
 
 
         // ensure matching xpub and insight networks
-        $xpub_network = CoinUtil::guess_network_from_xkey($this->correct_xpub_key);
+        $xpub_network = CoinUtil::guess_network_from_xkey( $this->correct_xpub_key() );
         try {
             $insight_network = $insight->get_network();
         }
@@ -211,7 +211,7 @@ class WC_Gateway_DashPay extends WC_Payment_Gateway {
         $missing = DP()->missing_required_extensions();
         if ( 0 !== count($missing) ) {
             $msg = sprintf(
-                esc_html__("Required extension(s) not loaded/enabled. Please enable '%s' PHP extension(s) on your WordPress server.", 'dashpay-woocommerce'),
+                __("<strong>DashPayments for WooCommerce:</strong> Required extension(s) not loaded/enabled. Please enable '%s' PHP extension(s) on your WordPress server.", 'dashpay-woocommerce'),
                 join(', ', $missing)
             );
             self::_admin_error( $msg );
@@ -261,7 +261,7 @@ class WC_Gateway_DashPay extends WC_Payment_Gateway {
 
 
         // ensure matching xpub and insight networks
-        $xpub_network = CoinUtil::guess_network_from_xkey($this->correct_xpub_key);
+        $xpub_network = CoinUtil::guess_network_from_xkey( $this->correct_xpub_key() );
         try {
             $insight_network = $insight->get_network();
         }
@@ -422,7 +422,7 @@ class WC_Gateway_DashPay extends WC_Payment_Gateway {
         $order_info = array(
             'order_id' => $order_id,
             'payment_currency' => self::$currency,
-            'xpub' => $this->settings['correct_xpub_key'],
+            'xpub' => $this->correct_xpub_key(),
             'expires_at' => $expires_at,
             'requested_by_ip' => @$_SERVER['REMOTE_ADDR'],
             'order_total_coins' => $order_total_in_coins,
@@ -507,30 +507,17 @@ class WC_Gateway_DashPay extends WC_Payment_Gateway {
     }
 
     /**
-     * Update DB with properly serialized extended public key
+     * Return properly serialized extended public key
      *
      * @access protected
      * @return void
      */
-    protected function ensure_correct_xpub_key($xpub) {
+    protected function correct_xpub_key() {
         // must be valid xpub
-        if ( ! CoinUtil::is_valid_public_xkey( $xpub ) ) {
+        if ( ! CoinUtil::is_valid_public_xkey( $this->xpub_key ) ) {
             return '';
         }
-
-        $correct_xpub_key = CoinUtil::reserialize_key( $xpub, self::$currency );
-
-        $correct = $this->get_option('correct_xpub_key');
-
-        $settings_option_name = DP_Gateways::settings_option_for( self::$currency );
-        $settings = get_option( $settings_option_name );
-
-        // update if not the same
-        if ( $correct !== $correct_xpub_key ) {
-          $settings['correct_xpub_key'] = $correct_xpub_key;
-          update_option( $settings_option_name, $settings );
-        }
-
+        $correct_xpub_key = CoinUtil::reserialize_key( $this->xpub_key, self::$currency );
         return $correct_xpub_key;
     }
 

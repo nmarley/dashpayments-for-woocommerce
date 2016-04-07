@@ -82,6 +82,10 @@ In the future, this will either be delegated to something like coinmarketcap (no
 
 == Changelog ==
 
+= 0.0.2 =
+
+* bugfix: Warn if required PHP extensions not enabled.
+
 = 0.0.1 =
 
 * New
