@@ -35,6 +35,10 @@ Navigate to WooCommerce -> Settings -> Checkout. Click the 'Dash' option at the 
 
 If you see a message stating "Dash payment gateway is operational", you should be ready to accept payment in Dash.
 
+Here's a YouTube video demonstrating the exact process I described above:
+
+<https://www.youtube.com/watch?v=HFzMPBY1rAQ>
+
 ### **HIGHLY RECOMMENDED (READ THIS SECTION)**
 
 It's highly recommended that you setup a cron job to handle background order processing. It's not technically required, but will catch things like if a user closes their browser before the payment gets processed.
