@@ -240,12 +240,11 @@ class WC_Gateway_DashPay extends WC_Payment_Gateway {
         catch (\Exception $e) {
             $insight_valid = false;
         }
-        finally {
-            if ( ! $insight_valid ) {
-                $msg = __('Insight-API error in connection or network status', 'dashpay-woocommerce');
-                self::_admin_error( $msg );
-                return false;
-            }
+
+        if ( ! $insight_valid ) {
+            $msg = __('Insight-API error in connection or network status', 'dashpay-woocommerce');
+            self::_admin_error( $msg );
+            return false;
         }
 
         // ensure can connect to exchange rate webservice
