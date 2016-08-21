@@ -62,7 +62,7 @@ class DP_Insight_API {
     // verify Insight-API sync status
     if (
           ("finished" !== $sync_status->status)  ||
-          ("100.000" !== $sync_status->syncPercentage)  ||
+          (100.0 !== floatval($sync_status->syncPercentage))  ||
           (NULL !== $sync_status->error)
        ) {
       // throw new Exception("Insight API sync error.");
