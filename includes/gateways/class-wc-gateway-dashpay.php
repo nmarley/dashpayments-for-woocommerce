@@ -331,7 +331,7 @@ class WC_Gateway_DashPay extends WC_Payment_Gateway {
             'title' => __('Insight API url', 'dashpay-woocommerce' ),
             'description' => 'This plugin requires a running instance of Insight-API. You may use the default, or provide your own for greater security.',
             'type' => 'text',
-            'default' => 'http://insight.blackcarrot.be',
+            'default' => 'https://insight.blackcarrot.be',
             // 'desc_tip'    => true,
           ),
           'description' => array(
