@@ -82,6 +82,10 @@ In the future, this will either be delegated to something like coinmarketcap (no
 
 == Changelog ==
 
+= 0.0.5 =
+
+* Use Insight-API provided by Dash.org
+
 = 0.0.4 =
 
 * Bugfix: Account for differences in sync-status output of Insight-API.
