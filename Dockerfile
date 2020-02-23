@@ -6,7 +6,7 @@ RUN /bin/echo 'set -o vi' >> /etc/profile
 RUN apt-get update
 RUN apt-get -y upgrade
 RUN apt-get -y install aptitude vim openssl build-essential zip unzip
-RUN apt-get -y install php7.0 php7.0-fpm php7.0-gmp php7.0-bcmath php7.0-gd php7.0-mcrypt php7.0-curl php7.0-json composer php-composer-ca-bundle
+RUN apt-get -y install php7.2 php7.2-fpm php7.2-gmp php7.2-bcmath php7.2-gd php7.2-mcrypt php7.2-curl php7.2-json composer php-composer-ca-bundle
 RUN rm -fr /var/cache/apt/*
 
 COPY . /dp4wc/dashpay-woocommerce/
