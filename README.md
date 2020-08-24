@@ -10,7 +10,7 @@ DashPayments for WooCommerce is a Wordpress plugin that enables WooCommerce merc
 * An Electrum-Dash wallet for receiving payments
 * WordPress 4.4.2+
 * WooCommerce 2.5.2+
-* PHP 5.5+ with valid extensions:
+* PHP 7.2+ with valid extensions:
   - gmp
   - bcmath
   - gd
@@ -25,7 +25,9 @@ Install composer using your package manager, then use ```composer install``` to 
 
 If desired, use 'zip' to package the directory into a zip file with the same name:
 
-    cd .. && zip -r dashpay-woocommerce.zip dashpay-woocommerce/
+```sh
+cd .. && zip -r dashpay-woocommerce.zip dashpay-woocommerce/
+```
 
 ### Installation and Activation
 
@@ -45,11 +47,16 @@ It's highly recommended that you setup a cron job to handle background order pro
 
 For manual cron jobs, add this line to your crontab (replace <yourdomain.com> with your own WordPress site URL):
 
-    * * * * * curl -s http://<yourdomain.com>/wp-cron.php?doing_wp_cron > /dev/null 2>&1
+
+```sh
+* * * * * curl -s http://<yourdomain.com>/wp-cron.php?doing_wp_cron > /dev/null 2>&1
+```
 
 For CPANEL, run the command below every minute (replace <yourdomain.com> with your own WordPress site URL):
 
-    curl -s http://<yourdomain.com>/wp-cron.php?doing_wp_cron > /dev/null 2>&1
+```sh
+curl -s http://<yourdomain.com>/wp-cron.php?doing_wp_cron > /dev/null 2>&1
+```
 
 ### Contributions/Bugs/Issues
 
