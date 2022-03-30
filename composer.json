@@ -2,13 +2,7 @@
     "name": "blackcarrot/dashpay-woocommerce",
     "description": "DashPayments for WooCommerce",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Black Carrot Ventures",
-            "email": "nmarley@blackcarrot.be",
-            "homepage": "http://blackcarrotventures.com"
-        }
-    ],
+    "authors": [],
     "require": {
         "php": ">=5.4.0",
         "ext-gd": "*",

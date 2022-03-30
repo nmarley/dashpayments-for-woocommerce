@@ -15,7 +15,6 @@ if ( ! class_exists( 'WC_Gateway_DashPay' ) ) :
  * @extends  WC_Payment_Gateway
  * @version  0.0.1
  * @package  DashPayments
- * @author   "Black Carrot Ventures" <nmarley@blackcarrot.be>
  */
 class WC_Gateway_DashPay extends WC_Payment_Gateway {
     private static $currency = 'Dash';

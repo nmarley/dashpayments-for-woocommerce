@@ -1,12 +1,10 @@
 === DashPayments for WooCommerce ===
-Contributors: nmarley
 Tags: dash, dash wordpress plugin, dash plugin, dash payments, accept dash, dash, pay-with-dash
 Requires at least: 4.4
 Tested up to: 4.4
 Stable tag: release
 License: MIT
 License URI: https://opensource.org/licenses/MIT
-Donate link: http://dash:XdBKajV4g2wnpnAvvnV9dxwypQMfFHYWtp
 
 == Description ==
 
