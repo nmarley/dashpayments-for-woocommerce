@@ -1,5 +1,4 @@
 FROM ubuntu:16.10
-MAINTAINER BlackCarrot <dev@blackcarrot.be>
 LABEL description="DashPayments for WooCommerce Plugin"
 
 RUN /bin/echo 'set -o vi' >> /etc/profile
